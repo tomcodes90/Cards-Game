@@ -19,7 +19,7 @@ class Deck {
   }
   shuffleDeck() {
     let leftHand, rightHand, shuffleAction;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 21; i++) {
       leftHand = Math.floor(Math.random() * this.cards.length);
       rightHand = Math.floor(Math.random() * this.cards.length);
       shuffleAction = this.cards[leftHand];
@@ -40,8 +40,9 @@ function newGame() {
   freshDeck.shuffleDeck();
   const player1 = new player("player1");
   const player2 = new player("player2");
-  player1.playerCards = freshDeck.cards.slice(0, 9);
-  player2.playerCards = freshDeck.cards.slice(10, 19);
-  console.log(player1.playerCards);
-  console.log(player2.playerCards);
+  player1.playerCards = freshDeck.cards.slice(0, 10);
+  player2.playerCards = freshDeck.cards.slice(10, 20);
+  player1.playerCards.pop()
+  player2.playerCards.pop()
+  if ( player1
 }
