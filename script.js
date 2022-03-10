@@ -1,4 +1,4 @@
-let limboDeck = [];
+// Deck class
 class Card {
   constructor(value) {
     this.value = value;
@@ -29,6 +29,9 @@ class Deck {
     }
   }
 }
+
+// Player class
+
 class player {
   constructor(name) {
     this.name = name;
@@ -36,7 +39,9 @@ class player {
     this.playerCard;
   }
 }
+// Game logic
 
+let limboDeck = [];
 let freshDeck = new Deck();
 freshDeck.createDeck();
 freshDeck.shuffleDeck();
@@ -58,8 +63,8 @@ function nextRound() {
     player2.playerDeck.push(player1.playerCard, player2.playerCard);
     console.log("Player 2 wins the round!");
   }
-  console.log(`Player 1 card count: ${player1.playerDeck.length}`);
-  console.log(`Player 2 card count: ${player2.playerDeck.length}`);
+  console.log(`Player 1 cards count: ${player1.playerDeck.length}`);
+  console.log(`Player 2 cards count: ${player2.playerDeck.length}`);
   if (player2.playerDeck.length == []) {
     console.log("You win the game!!");
   }
