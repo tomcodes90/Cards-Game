@@ -20,7 +20,7 @@ class Deck {
   }
   shuffleDeck() {
     let leftHand, rightHand, shuffleAction;
-    for (let i = 0; i < 21; i++) {
+    for (let i = 0; i < 50; i++) {
       leftHand = Math.floor(Math.random() * this.cards.length);
       rightHand = Math.floor(Math.random() * this.cards.length);
       shuffleAction = this.cards[leftHand];
@@ -41,22 +41,21 @@ class player {
 }
 // Game logic
 
-let limboDeck = [];
 let freshDeck = new Deck();
 freshDeck.createDeck();
 freshDeck.shuffleDeck();
-const player1 = new player("player1");
-const player2 = new player("player2");
+let player1 = new player("player1");
+let player2 = new player("player2");
 player1.playerDeck = freshDeck.cards.slice(0, 10);
 player2.playerDeck = freshDeck.cards.slice(10, 20);
-
-function nextRound() {
-  player1.playerCard = player1.playerDeck.pop();
-  player2.playerCard = player2.playerDeck.pop();
+let limboDeck = [];
+while (player1.playerDeck.lenght || player2.playerDeck.lenght != 0) {
+  player1.playerCard = player1.playerDeck.shift();
+  player2.playerCard = player2.playerDeck.shift();
   if (player1.playerCard.value > player2.playerCard.value) {
     player1.playerDeck.push(player1.playerCard, player2.playerCard);
     console.log("Player 1 wins the round!");
-  } else if (player1.playerCard.value === player2.playerCard.value) {
+  } else if (player1.playerCard.value == player2.playerCard.value) {
     limboDeck.push(player1.playerCard, player2.playerCard);
     console.log("Draw! Cards in the Limbo!!");
   } else {
