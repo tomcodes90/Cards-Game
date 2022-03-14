@@ -56,13 +56,13 @@ while (player1.playerDeck.length || player2.playerDeck.lenght > 0) {
   if (player1.playerDeck[0].value > player2.playerDeck[0].value) {
     player1.playerDeck.push(player1.playerCard, player2.playerCard);
     if (limbo.lenght > []) {
-      player1.playerDeck.concat[limbo];
+      player1.playerDeck.concat(limbo);
     }
     console.log("Player 1 wins the round!");
   } else if (player2.playerDeck[0].value > player1.playerDeck[0].value) {
     player2.playerDeck.push(player1.playerCard, player2.playerCard);
     if (limbo.lenght > []) {
-      player2.playerDeck.concat[limbo];
+      player2.playerDeck.concat(limbo);
     }
     console.log("Player 2 wins the round!");
   } else {
