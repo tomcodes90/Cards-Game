@@ -48,21 +48,25 @@ const player1 = new player("player1");
 const player2 = new player("player2");
 player1.playerDeck = freshDeck.cards.slice(0, 10);
 player2.playerDeck = freshDeck.cards.slice(10, 20);
-const limboDeck = new player("limboDeck");
-for (x = 0; x < player1.playerDeck.length || player2.playerDeck.lenght; ) {
-  player1.playerCard = player1.playerDeck.pop();
-  player2.playerCard = player2.playerDeck.pop();
-  if (player1.playerCard.value > player2.playerCard.value) {
+let limbo = [];
+while (player1.playerDeck.length || player2.playerDeck.lenght > 0) {
+  player1.playerCard = player1.playerDeck.shift();
+  player2.playerCard = player2.playerDeck.shift();
+
+  if (player1.playerDeck[0].value > player2.playerDeck[0].value) {
     player1.playerDeck.push(player1.playerCard, player2.playerCard);
-    player1.playerDeck.concat(limboDeck.playerDeck);
+    if (limbo.lenght > []) {
+      player1.playerDeck.concat[limbo];
+    }
     console.log("Player 1 wins the round!");
-  } else if (player2.playerCard.value > player1.playerCard.value) {
+  } else if (player2.playerDeck[0].value > player1.playerDeck[0].value) {
     player2.playerDeck.push(player1.playerCard, player2.playerCard);
-    player2.playerDeck.concat(limboDeck.playerDeck);
+    if (limbo.lenght > []) {
+      player2.playerDeck.concat[limbo];
+    }
     console.log("Player 2 wins the round!");
-  }
-  if (player1.playerCard.value == player2.playerCard.value) {
-    limboDeck.playerDeck.push(player1.playerCard, player2.playerCard);
+  } else {
+    limbo.push(player1.playerCard, player2.playerCard);
     console.log("Draw! Cards in the Limbo!!");
   }
   console.log(`Player 1 cards count: ${player1.playerDeck.length}`);
