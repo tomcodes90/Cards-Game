@@ -52,17 +52,18 @@ let limbo = [];
 while (player1.playerDeck.length || player2.playerDeck.lenght > 0) {
   player1.playerCard = player1.playerDeck.shift();
   player2.playerCard = player2.playerDeck.shift();
-
   if (player1.playerDeck[0].value > player2.playerDeck[0].value) {
     player1.playerDeck.push(player1.playerCard, player2.playerCard);
-    if (limbo.lenght > []) {
-      player1.playerDeck.concat(limbo);
+    if (!limbo.lenght) {
+      player1.playerDeck.push(...limbo);
+      limbo = [];
     }
     console.log("Player 1 wins the round!");
   } else if (player2.playerDeck[0].value > player1.playerDeck[0].value) {
     player2.playerDeck.push(player1.playerCard, player2.playerCard);
-    if (limbo.lenght > []) {
-      player2.playerDeck.concat(limbo);
+    if (!limbo.lenght) {
+      player2.playerDeck.push(...limbo);
+      limbo = [];
     }
     console.log("Player 2 wins the round!");
   } else {
@@ -71,10 +72,4 @@ while (player1.playerDeck.length || player2.playerDeck.lenght > 0) {
   }
   console.log(`Player 1 cards count: ${player1.playerDeck.length}`);
   console.log(`Player 2 cards count: ${player2.playerDeck.length}`);
-  if (player2.playerDeck.length == []) {
-    console.log("You win the game!!");
-  }
-  if (player1.playerDeck.length == []) {
-    console.log("You lost the game!!");
-  }
 }
