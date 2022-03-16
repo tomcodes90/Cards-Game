@@ -10,9 +10,7 @@ class Deck {
   }
 
   createDeck() {
-    let values = [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 12, 12, 14, 14, 16, 16, 18, 18, 20,
-    ];
+    let values = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 20];
 
     for (let i = 0; i < values.length; i++) {
       this.cards.push(new Card(values[i]));
@@ -49,19 +47,19 @@ const player2 = new player("player2");
 player1.playerDeck = freshDeck.cards.slice(0, 10);
 player2.playerDeck = freshDeck.cards.slice(10, 20);
 let limbo = [];
-while (player1.playerDeck.length || player2.playerDeck.lenght > 0) {
+while (player1.playerDeck.length != 0 && player2.playerDeck.length != 0) {
   player1.playerCard = player1.playerDeck.shift();
   player2.playerCard = player2.playerDeck.shift();
-  if (player1.playerDeck[0].value > player2.playerDeck[0].value) {
+  if (player1.playerCard.value > player2.playerCard.value) {
     player1.playerDeck.push(player1.playerCard, player2.playerCard);
-    if (!limbo.lenght) {
+    if (limbo.length != 0) {
       player1.playerDeck.push(...limbo);
       limbo = [];
     }
     console.log("Player 1 wins the round!");
-  } else if (player2.playerDeck[0].value > player1.playerDeck[0].value) {
+  } else if (player2.playerCard.value > player1.playerCard.value) {
     player2.playerDeck.push(player1.playerCard, player2.playerCard);
-    if (!limbo.lenght) {
+    if (limbo.length != 0) {
       player2.playerDeck.push(...limbo);
       limbo = [];
     }
@@ -69,6 +67,13 @@ while (player1.playerDeck.length || player2.playerDeck.lenght > 0) {
   } else {
     limbo.push(player1.playerCard, player2.playerCard);
     console.log("Draw! Cards in the Limbo!!");
+  }
+  if ((player1.playerDeck.length = [])) {
+    player1.playerDeck.length = [];
+    console.log("You Lose! :(");
+  } else if ((player2.playerDeck.length = [])) {
+    player2.playerDeck.length = [];
+    console.log("You Win!! GG!!");
   }
   console.log(`Player 1 cards count: ${player1.playerDeck.length}`);
   console.log(`Player 2 cards count: ${player2.playerDeck.length}`);
