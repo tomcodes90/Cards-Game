@@ -50,6 +50,8 @@ let limbo = [];
 while (player1.playerDeck.length != 0 && player2.playerDeck.length != 0) {
   player1.playerCard = player1.playerDeck.shift();
   player2.playerCard = player2.playerDeck.shift();
+  console.log(player1.playerCard);
+  console.log(player2.playerCard);
   if (player1.playerCard.value > player2.playerCard.value) {
     player1.playerDeck.push(player1.playerCard, player2.playerCard);
     if (limbo.length != 0) {
